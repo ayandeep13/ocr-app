@@ -9,22 +9,22 @@ st.title("OCR and Keyword Search Application")
 # File uploader widget
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
-# Function to perform OCR using pytesseract
+# Function to perform OCR using pytesseract library
 def perform_tesseract_ocr(image):
     extracted_text = pytesseract.image_to_string(image, lang="hin+eng")
     return extracted_text
 
-# If an image is uploaded
+# If an image is uploaded 
 if uploaded_file is not None:
     # Open and display the uploaded image
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
-    # Perform OCR and display extracted text
+    # Perform OCR and display extracted text 
     st.write("Extracting text from the image...")
     extracted_text = perform_tesseract_ocr(image)
     
-    # Display the extracted text
+    # Display the extracted text 
     st.subheader("Extracted Text")
     st.text(extracted_text)
     
